@@ -45,7 +45,7 @@ public:
     /// @param[out] outPointCloud The resulting point cloud after filtering
     FrameworkReturnCode filter(const SRef<PointCloud> inPointCloud, const SRef<Point3Df> centroid, SRef<PointCloud>& outPointCloud) const override final;
 
-    void unloadComponent () override final;
+    void unloadComponent () override;
 
 private:
 
