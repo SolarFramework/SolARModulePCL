@@ -16,7 +16,7 @@
 #include "xpcf/module/ModuleFactory.h"
 #include "SolARModulePCL_traits.h"
 
-#include "SolARPointCloudloaderPCL.h"
+#include "SolARPointCloudLoaderPCL.h"
 
 namespace xpcf=org::bcom::xpcf;
 
