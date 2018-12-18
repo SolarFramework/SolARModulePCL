@@ -16,8 +16,12 @@
 
 #include "SolARPointCloudLoaderPCL.h"
 
-namespace xpcf = org::bcom::xpcf;
+#include <pcl/io/pcd_io.h>
+#include <pcl/io/ply_io.h>
+#include <pcl/point_types.h>
+#include <pcl/point_cloud.h>
 
+namespace xpcf = org::bcom::xpcf;
 
 XPCF_DEFINE_FACTORY_CREATE_INSTANCE(SolAR::MODULES::PCL::PointCloudLoader)
 
@@ -34,6 +38,32 @@ PointCloudLoader::PointCloudLoader():ConfigurableBase(xpcf::toUUID<PointCloudLoa
 
 FrameworkReturnCode PointCloudLoader::load(const std::string filepath, SRef<PointCloud> pointCloud)
 {
+    pcl::PointCloud<pcl::PointXYZ> pointCloudPCL;
+
+    int res = 0;
+    if( boost::algorithm::ends_with( filepath, ".pcd" ) )
+        res = pcl::io::loadPCDFile( filepath, pointCloudPCL );
+    else if( boost::algorithm::ends_with( filepath, ".ply" ) )
+        res = pcl::io::loadPLYFile( filepath, pointCloudPCL );
+    else
+    {
+        LOG_ERROR("file extension not managed for file {} (only .pcd and .ply supported for now)", filepath );
+        return FrameworkReturnCode::_STOP;
+    }
+
+    if( res < 0 )
+    {
+        LOG_ERROR("cannot parse file {} (return code:{})", filepath, res );
+        return FrameworkReturnCode::_STOP;
+    }
+
+    auto& points = pointCloud->getPointCloud();
+
+    for(const auto& pt : pointCloudPCL)
+    {
+        points.emplace_back( pt.x, pt.y, pt.z );
+    }
+
     return FrameworkReturnCode::_SUCCESS;
 }
 

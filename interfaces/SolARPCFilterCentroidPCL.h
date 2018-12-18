@@ -48,7 +48,7 @@ public:
     void unloadComponent () override;
 
 private:
-
+    float m_radiusThreshold = 0.1f; // in meters <-> defaults to 10cm
 
 };
 

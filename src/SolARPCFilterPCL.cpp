@@ -16,8 +16,11 @@
 
 #include "SolARPCFilterPCL.h"
 
-namespace xpcf = org::bcom::xpcf;
+#include <pcl/point_types.h>
+#include <pcl/point_cloud.h>
+#include <pcl/filters/voxel_grid.h>
 
+namespace xpcf = org::bcom::xpcf;
 
 XPCF_DEFINE_FACTORY_CREATE_INSTANCE(SolAR::MODULES::PCL::PCFilter)
 
@@ -30,10 +33,31 @@ PCFilter::PCFilter():ConfigurableBase(xpcf::toUUID<PCFilter>())
 {
     addInterface<api::pointCloud::IPCFilter>(this);
     SRef<xpcf::IPropertyMap> params = getPropertyRootNode();
+    params->wrapFloat( "leafSize", m_leafSize );
 }
 
 FrameworkReturnCode PCFilter::filter(const SRef<PointCloud> inPointCloud, SRef<PointCloud>& outPointCloud) const
 {
+    pcl::PointCloud<pcl::PointXYZ>::Ptr inPointCloudPCL( new pcl::PointCloud<pcl::PointXYZ> );
+
+    const auto& in_points = inPointCloud->getConstPointCloud();
+    auto& out_points = outPointCloud->getPointCloud();
+
+    for( const auto& pt : in_points )
+    {
+        inPointCloudPCL->push_back( { pt.x(), pt.y(), pt.z() } );
+    }
+
+    pcl::VoxelGrid<pcl::PointXYZ> vg;
+    vg.setInputCloud( inPointCloudPCL );
+    vg.setLeafSize( m_leafSize, m_leafSize, m_leafSize );
+    vg.filter( *inPointCloudPCL );
+
+    for( const auto& pt : *inPointCloudPCL )
+    {
+        out_points.emplace_back( pt.x, pt.y, pt.z );
+    }
+
     return FrameworkReturnCode::_SUCCESS;
 }
 
