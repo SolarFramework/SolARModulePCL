@@ -40,20 +40,20 @@ public:
     ~ICPNormals()= default;
 
     /// @brief Estimates depth sensor pose from a set of 3D points captured by the depth sensor and defined in the depth sensor coordinate and a point cloud representing the real world geometry.
-    /// @param[in] sensorPointCloud, a point cloud captured by the depth sensor defined in the depth sensor coordinate system.
-    /// @param[in] worldPoints, a point cloud repreenting the geometry of teh real world.
-    /// @param[out] pose, depth camera pose (pose of the depth camera defined in world corrdinate system) expressed as a Transform3D.
+    /// @param[in] sourcePointCloud, a point cloud captured by the depth sensor defined in the depth sensor coordinate system.
+    /// @param[in] targetPointCloud, a point cloud representing the geometry of the real world.
+    /// @param[out] pose, depth camera pose (pose of the depth camera defined in world coordinate system) expressed as a Transform3D.
     /// @param[in] initialPose (Optional), a transform3D to initialize the pose (reducing the convergence time and improving its success).
-    FrameworkReturnCode estimate(const SRef<PointCloud> sensorPointCloud,
-                                 const SRef<PointCloud> worldPointCloud,
+    FrameworkReturnCode estimate(const SRef<PointCloud> sourcePointCloud,
+                                 const SRef<PointCloud> targetPointCloud,
                                  Transform3Df& pose,
-                                 const Transform3Df initialPose = Transform3Df::Identity()) override final;
+                                 const Transform3Df& initialPose = Transform3Df::Identity()) override final;
 
     void unloadComponent () override final;
 
 private:
-
-
+    double m_icpPlaneTransformationEpsilon = 1e-8;
+    double m_normalEstimationNeighboorhood = 0.02;
 };
 
 }
