@@ -17,6 +17,10 @@
 #include "SolARModulePCL_traits.h"
 
 #include "SolARPointCloudLoaderPCL.h"
+#include "SolARICPNormalsPCL.h"
+#include "SolARICPPCL.h"
+#include "SolARPCFilterCentroidPCL.h"
+#include "SolARPCFilterPCL.h"
 
 namespace xpcf=org::bcom::xpcf;
 
@@ -26,10 +30,29 @@ extern "C" XPCF_MODULEHOOKS_API xpcf::XPCFErrorCode XPCF_getComponent(const boos
 {
     xpcf::XPCFErrorCode errCode = xpcf::XPCFErrorCode::_FAIL;
     errCode = xpcf::tryCreateComponent<SolAR::MODULES::PCL::PointCloudLoader>(componentUUID,interfaceRef);
-
+    if (errCode != xpcf::XPCFErrorCode::_SUCCESS)
+    {
+        errCode = xpcf::tryCreateComponent<SolAR::MODULES::PCL::ICPNormals>(componentUUID,interfaceRef);
+    }
+    if (errCode != xpcf::XPCFErrorCode::_SUCCESS)
+    {
+        errCode = xpcf::tryCreateComponent<SolAR::MODULES::PCL::ICP>(componentUUID,interfaceRef);
+    }
+    if (errCode != xpcf::XPCFErrorCode::_SUCCESS)
+    {
+        errCode = xpcf::tryCreateComponent<SolAR::MODULES::PCL::PCFilter>(componentUUID,interfaceRef);
+    }
+    if (errCode != xpcf::XPCFErrorCode::_SUCCESS)
+    {
+        errCode = xpcf::tryCreateComponent<SolAR::MODULES::PCL::PCFilterCentroid>(componentUUID,interfaceRef);
+    }
     return errCode;
 }
 
 XPCF_BEGIN_COMPONENTS_DECLARATION
 XPCF_ADD_COMPONENT(SolAR::MODULES::PCL::PointCloudLoader)
+XPCF_ADD_COMPONENT(SolAR::MODULES::PCL::ICPNormals)
+XPCF_ADD_COMPONENT(SolAR::MODULES::PCL::ICP)
+XPCF_ADD_COMPONENT(SolAR::MODULES::PCL::PCFilter)
+XPCF_ADD_COMPONENT(SolAR::MODULES::PCL::PCFilterCentroid)
 XPCF_END_COMPONENTS_DECLARATION
