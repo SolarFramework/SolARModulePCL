@@ -30,7 +30,7 @@ pcl::PointCloud<pcl::PointXYZ>::Ptr SolARPCLHelper::solar2pclPointCloud( const S
 
     for( const auto& pt : in_points )
     {
-        outPointCloudPCL->push_back( { pt->x(), pt->y(), pt->z() } );
+        outPointCloudPCL->push_back( { pt.x(), pt.y(), pt.z() } );
     }
 
     return outPointCloudPCL;
@@ -44,7 +44,7 @@ SRef<datastructure::PointCloud> SolARPCLHelper::pcl2solarPointCloud( const pcl::
 
     for( const auto& pt : *inPointCloudPCL )
     {
-        out_points.emplace_back( xpcf::utils::make_shared<datastructure::Point3Df>(pt.x, pt.y, pt.z) );
+        out_points.emplace_back(pt.x, pt.y, pt.z);
     }
 
     return outPointCloud;
