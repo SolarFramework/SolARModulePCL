@@ -52,9 +52,9 @@ FrameworkReturnCode PCFilterCentroid::filter(const SRef<PointCloud> inPointCloud
 
     for( const auto& pt : in_points_pcl )
     {
-        // quite incredible, but cannot pass directly PointXYZ to distance function as operator- is not defined...
-        if( pcl::geometry::distance( pt.getArray3fMap(), ref_point.getArray3fMap() ) <= m_radiusThreshold )
+        if( pcl::geometry::distance( pt, ref_point ) <= m_radiusThreshold )
             out_points.emplace_back( pt.x, pt.y, pt.z );
+
     }
 
     return FrameworkReturnCode::_SUCCESS;
