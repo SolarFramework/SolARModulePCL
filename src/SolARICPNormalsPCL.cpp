@@ -15,6 +15,7 @@
  */
 
 #include "SolARICPNormalsPCL.h"
+#include "SolARPCLHelper.h"
 
 #include <pcl/features/normal_3d_omp.h>
 #include <pcl/registration/icp.h>
@@ -56,22 +57,10 @@ ICPNormals::ICPNormals():ConfigurableBase(xpcf::toUUID<ICPNormals>())
 FrameworkReturnCode ICPNormals::estimate(const SRef<PointCloud> sourcePointCloud,
                                          const SRef<PointCloud> targetPointCloud,
                                          Transform3Df& pose,
-                                         const Transform3Df& initialPose) {
-    pcl::PointCloud<pcl::PointXYZ>::Ptr source_points_pcl( new pcl::PointCloud<pcl::PointXYZ> );
-    pcl::PointCloud<pcl::PointXYZ>::Ptr target_points_pcl( new pcl::PointCloud<pcl::PointXYZ> );
-
-    const auto& source_points = sourcePointCloud->getConstPointCloud();
-    const auto& target_points = targetPointCloud->getConstPointCloud();
-
-    for( const auto& pt : source_points )
-    {
-        source_points_pcl->push_back( { pt.x(), pt.y(), pt.z() } );
-    }
-
-    for( const auto& pt : target_points )
-    {
-        target_points_pcl->push_back( { pt.x(), pt.y(), pt.z() } );
-    }
+                                         const Transform3Df& initialPose)
+{
+    pcl::PointCloud<pcl::PointXYZ>::Ptr source_points_pcl = SolARPCLHelper::solar2pclPointCloud( sourcePointCloud );
+    pcl::PointCloud<pcl::PointXYZ>::Ptr target_points_pcl = SolARPCLHelper::solar2pclPointCloud( targetPointCloud );
 
     pcl::IterativeClosestPointWithNormals<pcl::PointNormal,pcl::PointNormal> picp;
 

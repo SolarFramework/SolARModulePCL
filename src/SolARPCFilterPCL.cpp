@@ -15,6 +15,7 @@
  */
 
 #include "SolARPCFilterPCL.h"
+#include "SolARPCLHelper.h"
 
 #include <pcl/point_types.h>
 #include <pcl/point_cloud.h>
@@ -38,25 +39,14 @@ PCFilter::PCFilter():ConfigurableBase(xpcf::toUUID<PCFilter>())
 
 FrameworkReturnCode PCFilter::filter(const SRef<PointCloud> inPointCloud, SRef<PointCloud>& outPointCloud) const
 {
-    pcl::PointCloud<pcl::PointXYZ>::Ptr inPointCloudPCL( new pcl::PointCloud<pcl::PointXYZ> );
-
-    const auto& in_points = inPointCloud->getConstPointCloud();
-    auto& out_points = outPointCloud->getPointCloud();
-
-    for( const auto& pt : in_points )
-    {
-        inPointCloudPCL->push_back( { pt.x(), pt.y(), pt.z() } );
-    }
+    pcl::PointCloud<pcl::PointXYZ>::Ptr inPointCloudPCL = SolARPCLHelper::solar2pclPointCloud( inPointCloud );
 
     pcl::VoxelGrid<pcl::PointXYZ> vg;
     vg.setInputCloud( inPointCloudPCL );
     vg.setLeafSize( m_leafSize, m_leafSize, m_leafSize );
     vg.filter( *inPointCloudPCL );
 
-    for( const auto& pt : *inPointCloudPCL )
-    {
-        out_points.emplace_back( pt.x, pt.y, pt.z );
-    }
+    outPointCloud = SolARPCLHelper::pcl2solarPointCloud( inPointCloudPCL );
 
     return FrameworkReturnCode::_SUCCESS;
 }

@@ -29,7 +29,7 @@ namespace PCL {
 
 /**
  * @class ICP
- * @brief This component filters a point cloud according to a given centroid based on Point Cloud Library (PCL).
+ * @brief This component performs Point-To-Point registration between two pointclouds based on Point Cloud Library (PCL).
  */
 class SOLARPCL_EXPORT_API ICP : public org::bcom::xpcf::ConfigurableBase,
     public api::solver::pose::I3DTransformFinderFrom3D3D
