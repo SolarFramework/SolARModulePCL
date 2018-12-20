@@ -20,6 +20,8 @@ namespace SolAR {
 namespace MODULES {
 namespace PCL {
 
+namespace xpcf = org::bcom::xpcf;
+
 pcl::PointCloud<pcl::PointXYZ>::Ptr SolARPCLHelper::solar2pclPointCloud( const SRef<datastructure::PointCloud>& inPointCloud )
 {
     pcl::PointCloud<pcl::PointXYZ>::Ptr outPointCloudPCL( new pcl::PointCloud<pcl::PointXYZ> );
@@ -32,6 +34,20 @@ pcl::PointCloud<pcl::PointXYZ>::Ptr SolARPCLHelper::solar2pclPointCloud( const S
     }
 
     return outPointCloudPCL;
+}
+
+SRef<datastructure::PointCloud> SolARPCLHelper::pcl2solarPointCloud( const pcl::PointCloud<pcl::PointXYZ>::Ptr& inPointCloudPCL )
+{
+    SRef<datastructure::PointCloud> outPointCloud = xpcf::utils::make_shared<datastructure::PointCloud>();
+
+    auto& out_points = outPointCloud->getPointCloud();
+
+    for( const auto& pt : *inPointCloudPCL )
+    {
+        out_points.emplace_back( xpcf::utils::make_shared<datastructure::Point3Df>(pt.x, pt.y, pt.z) );
+    }
+
+    return outPointCloud;
 }
 
 }

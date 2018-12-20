@@ -15,6 +15,7 @@
  */
 
 #include "SolARPCFilterCentroidPCL.h"
+#include "SolARPCLHelper.h"
 
 #include <pcl/point_types.h>
 #include <pcl/point_cloud.h>
@@ -38,23 +39,16 @@ PCFilterCentroid::PCFilterCentroid():ConfigurableBase(xpcf::toUUID<PCFilterCentr
 
 FrameworkReturnCode PCFilterCentroid::filter(const SRef<PointCloud> inPointCloud, const SRef<Point3Df> centroid, SRef<PointCloud>& outPointCloud) const
 {
-    pcl::PointCloud<pcl::PointXYZ> in_points_pcl;
+    pcl::PointCloud<pcl::PointXYZ>::Ptr in_points_pcl = SolARPCLHelper::solar2pclPointCloud( inPointCloud );
 
-    const auto& in_points = inPointCloud->getConstPointCloud();
     auto& out_points = outPointCloud->getPointCloud();
 
     const pcl::PointXYZ ref_point{ centroid->x(), centroid->y(), centroid->z() };
 
-    for( const auto& pt : in_points )
+    for( const auto& pt : *in_points_pcl )
     {
-        in_points_pcl.push_back( { pt.x(), pt.y(), pt.z() } );
-    }
-
-    for( const auto& pt : in_points_pcl )
-    {
-        // quite incredible, but cannot pass directly PointXYZ to distance function as operator- is not defined...
-        if( pcl::geometry::distance( pt.getArray3fMap(), ref_point.getArray3fMap() ) <= m_radiusThreshold )
-            out_points.emplace_back( pt.x, pt.y, pt.z );
+        if( pcl::geometry::distance( pt, ref_point ) <= m_radiusThreshold )
+            out_points.emplace_back( xpcf::utils::make_shared<Point3Df>( pt.x, pt.y, pt.z ));
     }
 
     return FrameworkReturnCode::_SUCCESS;

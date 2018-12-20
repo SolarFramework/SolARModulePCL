@@ -15,6 +15,7 @@
  */
 
 #include "SolARPointCloudLoaderPCL.h"
+#include "SolARPCLHelper.h"
 
 #include <pcl/io/pcd_io.h>
 #include <pcl/io/ply_io.h>
@@ -38,13 +39,13 @@ PointCloudLoader::PointCloudLoader():ConfigurableBase(xpcf::toUUID<PointCloudLoa
 
 FrameworkReturnCode PointCloudLoader::load(const std::string filepath, SRef<PointCloud> pointCloud)
 {
-    pcl::PointCloud<pcl::PointXYZ> pointCloudPCL;
+    pcl::PointCloud<pcl::PointXYZ>::Ptr pointCloudPCL( new pcl::PointCloud<pcl::PointXYZ> );
 
     int res = 0;
     if( boost::algorithm::ends_with( filepath, ".pcd" ) )
-        res = pcl::io::loadPCDFile( filepath, pointCloudPCL );
+        res = pcl::io::loadPCDFile( filepath, *pointCloudPCL );
     else if( boost::algorithm::ends_with( filepath, ".ply" ) )
-        res = pcl::io::loadPLYFile( filepath, pointCloudPCL );
+        res = pcl::io::loadPLYFile( filepath, *pointCloudPCL );
     else
     {
         LOG_ERROR("file extension not managed for file {} (only .pcd and .ply supported for now)", filepath );
@@ -57,12 +58,7 @@ FrameworkReturnCode PointCloudLoader::load(const std::string filepath, SRef<Poin
         return FrameworkReturnCode::_STOP;
     }
 
-    auto& points = pointCloud->getPointCloud();
-
-    for(const auto& pt : pointCloudPCL)
-    {
-        points.emplace_back( pt.x, pt.y, pt.z );
-    }
+    pointCloud = SolARPCLHelper::pcl2solarPointCloud( pointCloudPCL );
 
     return FrameworkReturnCode::_SUCCESS;
 }
