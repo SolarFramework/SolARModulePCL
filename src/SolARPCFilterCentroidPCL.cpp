@@ -41,6 +41,9 @@ FrameworkReturnCode PCFilterCentroid::filter(const SRef<PointCloud> inPointCloud
 {
     pcl::PointCloud<pcl::PointXYZ>::Ptr in_points_pcl = SolARPCLHelper::solar2pclPointCloud( inPointCloud );
 
+    if (outPointCloud == nullptr)
+        outPointCloud = xpcf::utils::make_shared<PointCloud>();
+
     auto& out_points = outPointCloud->getPointCloud();
 
     const pcl::PointXYZ ref_point{ centroid->x(), centroid->y(), centroid->z() };

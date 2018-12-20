@@ -41,6 +41,9 @@ FrameworkReturnCode PCFilter::filter(const SRef<PointCloud> inPointCloud, SRef<P
 {
     pcl::PointCloud<pcl::PointXYZ>::Ptr inPointCloudPCL = SolARPCLHelper::solar2pclPointCloud( inPointCloud );
 
+    if (outPointCloud == nullptr)
+        outPointCloud = xpcf::utils::make_shared<PointCloud>();
+
     pcl::VoxelGrid<pcl::PointXYZ> vg;
     vg.setInputCloud( inPointCloudPCL );
     vg.setLeafSize( m_leafSize, m_leafSize, m_leafSize );
