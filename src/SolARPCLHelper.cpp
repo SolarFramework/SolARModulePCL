@@ -17,22 +17,21 @@
 #include "SolARPCLHelper.h"
 
 namespace SolAR {
-using namespace datastructure;
 namespace MODULES {
 namespace PCL {
 
-pcl::PointCloud<PointXYZ>::Ptr SolARPCLHelper::solar2pclPointCloud( const SRef<PointCloud>& inPointCloud )
+pcl::PointCloud<pcl::PointXYZ>::Ptr SolARPCLHelper::solar2pclPointCloud( const SRef<datastructure::PointCloud>& inPointCloud )
 {
-//    pcl::PointCloud<pcl::PointXYZ>::Ptr outPointCloudPCL( new pcl::PointCloud<pcl::PointXYZ> );
+    pcl::PointCloud<pcl::PointXYZ>::Ptr outPointCloudPCL( new pcl::PointCloud<pcl::PointXYZ> );
 
-//    const auto& in_points = inPointCloud->getConstPointCloud();
+    const auto& in_points = inPointCloud->getConstPointCloud();
 
-//    for( const auto& pt : in_points )
-//    {
-//        outPointCloudPCL->push_back( { pt.x(), pt.y(), pt.z() } );
-//    }
+    for( const auto& pt : in_points )
+    {
+        outPointCloudPCL->push_back( { pt->x(), pt->y(), pt->z() } );
+    }
 
-//    return outPointCloudPCL;
+    return outPointCloudPCL;
 }
 
 }

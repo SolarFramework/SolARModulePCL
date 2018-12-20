@@ -18,17 +18,20 @@
 #define SOLARPCLHELPER_H
 
 #include "SolARPCLAPI.h"
-//#include "datastructure/PointCloud.h"
+
+#include "datastructure/PointCloud.h"
+
+#include <pcl/point_cloud.h>
+#include <pcl/point_types.h>
 
 namespace SolAR {
-//using namespace datastructure;
 namespace MODULES {
 namespace PCL {
 
 class SOLARPCL_EXPORT_API SolARPCLHelper
 {
 public:
-    inline static pcl::PointCloud<PointXYZ> solar2pclPointCloud( const SRef<PointCloud>& inPointCloud );
+    inline static pcl::PointCloud<pcl::PointXYZ>::Ptr solar2pclPointCloud( const SRef<datastructure::PointCloud>& inPointCloud );
 };
 
 }
