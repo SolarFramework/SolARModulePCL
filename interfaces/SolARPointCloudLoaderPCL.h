@@ -39,7 +39,7 @@ public:
     PointCloudLoader();
     ~PointCloudLoader()= default;
 
-    FrameworkReturnCode load(const std::string filepath, SRef<PointCloud> pointCloud) override final;
+    FrameworkReturnCode load(const std::string filepath, SRef<PointCloud>& pointCloud) override final;
 
     void unloadComponent () override final;
 

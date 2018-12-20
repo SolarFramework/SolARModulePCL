@@ -37,7 +37,7 @@ PointCloudLoader::PointCloudLoader():ConfigurableBase(xpcf::toUUID<PointCloudLoa
     SRef<xpcf::IPropertyMap> params = getPropertyRootNode();
 }
 
-FrameworkReturnCode PointCloudLoader::load(const std::string filepath, SRef<PointCloud> pointCloud)
+FrameworkReturnCode PointCloudLoader::load(const std::string filepath, SRef<PointCloud>& pointCloud)
 {
     pcl::PointCloud<pcl::PointXYZ>::Ptr pointCloudPCL( new pcl::PointCloud<pcl::PointXYZ> );
 
@@ -58,7 +58,10 @@ FrameworkReturnCode PointCloudLoader::load(const std::string filepath, SRef<Poin
         return FrameworkReturnCode::_STOP;
     }
 
+    pointCloud = xpcf::utils::make_shared<PointCloud>();
     pointCloud = SolARPCLHelper::pcl2solarPointCloud( pointCloudPCL );
+
+    LOG_INFO("successfully loaded pointcloud file {}",filepath);
 
     return FrameworkReturnCode::_SUCCESS;
 }
