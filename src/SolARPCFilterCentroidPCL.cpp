@@ -48,7 +48,7 @@ FrameworkReturnCode PCFilterCentroid::filter(const SRef<PointCloud> inPointCloud
     for( const auto& pt : *in_points_pcl )
     {
         if( pcl::geometry::distance( pt, ref_point ) <= m_radiusThreshold )
-            out_points.emplace_back( xpcf::utils::make_shared<Point3Df>( pt.x, pt.y, pt.z ));
+            out_points.emplace_back( pt.x, pt.y, pt.z );
     }
 
     return FrameworkReturnCode::_SUCCESS;

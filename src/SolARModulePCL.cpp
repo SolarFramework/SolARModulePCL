@@ -20,7 +20,7 @@
 
 namespace xpcf=org::bcom::xpcf;
 
-XPCF_DECLARE_MODULE("bc1a5b44-d022-4234-8f7a-7e2b72763bad", "SolARModuleModule", "A module to handle Point Cloud Library features")
+XPCF_DECLARE_MODULE("bc1a5b44-d022-4234-8f7a-7e2b72763bad", "SolARModulePCL", "A module to handle Point Cloud Library features")
 
 extern "C" XPCF_MODULEHOOKS_API xpcf::XPCFErrorCode XPCF_getComponent(const boost::uuids::uuid& componentUUID,SRef<xpcf::IComponentIntrospect>& interfaceRef)
 {
