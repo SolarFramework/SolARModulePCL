@@ -47,7 +47,7 @@ public:
     void unloadComponent () override final;
 
 private:
-    float m_leafSize = 0.001f; // in meters <-> defaults to 1mm
+    float m_leafSize = 0.05f; // in meters <-> defaults to 5cm
 
 };
 
