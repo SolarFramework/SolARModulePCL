@@ -29,8 +29,8 @@ namespace MODULES {
 namespace PCL {
 
 /**
- * @class ICP
- * @brief This component filters a point cloud according to a given centroid based on Point Cloud Library (PCL).
+ * @class ICPNormals
+ * @brief This component performs Point-To-Plane registration between two pointclouds based on Point Cloud Library (PCL).
  */
 class SOLARPCL_EXPORT_API ICPNormals : public org::bcom::xpcf::ConfigurableBase,
     public api::solver::pose::I3DTransformFinderFrom3D3D
