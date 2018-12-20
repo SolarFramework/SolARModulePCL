@@ -35,6 +35,7 @@ PCFilter::PCFilter():ConfigurableBase(xpcf::toUUID<PCFilter>())
     addInterface<api::pointCloud::IPCFilter>(this);
     SRef<xpcf::IPropertyMap> params = getPropertyRootNode();
     params->wrapFloat( "leafSize", m_leafSize );
+    params->wrapFloat( "depthMax", m_depthMax );
 }
 
 FrameworkReturnCode PCFilter::filter(const SRef<PointCloud> inPointCloud, SRef<PointCloud>& outPointCloud) const
@@ -47,6 +48,8 @@ FrameworkReturnCode PCFilter::filter(const SRef<PointCloud> inPointCloud, SRef<P
     pcl::VoxelGrid<pcl::PointXYZ> vg;
     vg.setInputCloud( inPointCloudPCL );
     vg.setLeafSize( m_leafSize, m_leafSize, m_leafSize );
+    vg.setFilterFieldName( "z" );
+    vg.setFilterLimits( 0.f, m_depthMax );
     vg.filter( *inPointCloudPCL );
 
     outPointCloud = SolARPCLHelper::pcl2solarPointCloud( inPointCloudPCL );

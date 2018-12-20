@@ -48,7 +48,7 @@ public:
 
 private:
     float m_leafSize = 0.05f; // in meters <-> defaults to 5cm
-
+    float m_depthMax = 2.f; // in meters <-> defaults to 2m
 };
 
 }
