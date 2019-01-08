@@ -46,6 +46,8 @@ FrameworkReturnCode PCFilterCentroid::filter(const SRef<PointCloud> inPointCloud
 
     auto& out_points = outPointCloud->getPointCloud();
 
+    out_points.clear();
+
     const pcl::PointXYZ ref_point{ centroid->x(), centroid->y(), centroid->z() };
 
     for( const auto& pt : *in_points_pcl )

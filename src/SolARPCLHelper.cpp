@@ -36,11 +36,11 @@ pcl::PointCloud<pcl::PointXYZ>::Ptr SolARPCLHelper::solar2pclPointCloud( const S
     return outPointCloudPCL;
 }
 
-SRef<datastructure::PointCloud> SolARPCLHelper::pcl2solarPointCloud( const pcl::PointCloud<pcl::PointXYZ>::Ptr& inPointCloudPCL )
+datastructure::PointCloud SolARPCLHelper::pcl2solarPointCloud( const pcl::PointCloud<pcl::PointXYZ>::Ptr& inPointCloudPCL )
 {
-    SRef<datastructure::PointCloud> outPointCloud = xpcf::utils::make_shared<datastructure::PointCloud>();
+    datastructure::PointCloud outPointCloud;
 
-    auto& out_points = outPointCloud->getPointCloud();
+    auto& out_points = outPointCloud.getPointCloud();
 
     for( const auto& pt : *inPointCloudPCL )
     {

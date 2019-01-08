@@ -52,7 +52,7 @@ FrameworkReturnCode PCFilter::filter(const SRef<PointCloud> inPointCloud, SRef<P
     vg.setFilterLimits( 0.f, m_depthMax );
     vg.filter( *inPointCloudPCL );
 
-    outPointCloud = SolARPCLHelper::pcl2solarPointCloud( inPointCloudPCL );
+    *outPointCloud = SolARPCLHelper::pcl2solarPointCloud( inPointCloudPCL );
 
     return FrameworkReturnCode::_SUCCESS;
 }

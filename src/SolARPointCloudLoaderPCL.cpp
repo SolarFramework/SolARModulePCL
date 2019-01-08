@@ -60,7 +60,8 @@ FrameworkReturnCode PointCloudLoader::load(const std::string filepath, SRef<Poin
 
     if( pointCloud == nullptr )
         pointCloud = xpcf::utils::make_shared<PointCloud>();
-    pointCloud = SolARPCLHelper::pcl2solarPointCloud( pointCloudPCL );
+
+    *pointCloud = SolARPCLHelper::pcl2solarPointCloud( pointCloudPCL );
 
     LOG_INFO("successfully loaded pointcloud file {}",filepath);
 
