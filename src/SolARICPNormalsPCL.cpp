@@ -62,8 +62,11 @@ FrameworkReturnCode ICPNormals::estimate(const SRef<PointCloud> sourcePointCloud
     pcl::PointCloud<pcl::PointXYZ>::Ptr source_points_pcl = SolARPCLHelper::solar2pclPointCloud( sourcePointCloud );
     pcl::PointCloud<pcl::PointXYZ>::Ptr target_points_pcl = SolARPCLHelper::solar2pclPointCloud( targetPointCloud );
 
-    pcl::IterativeClosestPointWithNormals<pcl::PointNormal,pcl::PointNormal> picp;
+    pcl::IterativeClosestPoint/*WithNormals*/<pcl::PointNormal,pcl::PointNormal> picp;
 
+    using point_to_plane_transfo_t = pcl::registration::TransformationEstimationPointToPlaneLLS<pcl::PointNormal, pcl::PointNormal>;
+    point_to_plane_transfo_t::Ptr point_to_plane( new point_to_plane_transfo_t() );
+    picp.setTransformationEstimation( point_to_plane );
     pcl::PointCloud<pcl::PointNormal>::Ptr source_with_normals( new pcl::PointCloud<pcl::PointNormal>() );
     pcl::PointCloud<pcl::PointNormal>::Ptr target_with_normals( new pcl::PointCloud<pcl::PointNormal>() );
     _add_normals_2_pointcloud( source_points_pcl, source_with_normals, m_normalEstimationNeighboorhood );
