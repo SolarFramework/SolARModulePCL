@@ -15,6 +15,8 @@
  */
 
 #include "SolARPCLHelper.h"
+#include "core/Log.h"
+
 
 namespace SolAR {
 namespace MODULES {

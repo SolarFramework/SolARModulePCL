@@ -20,17 +20,19 @@
 #include <pcl/point_types.h>
 #include <pcl/point_cloud.h>
 #include <pcl/filters/voxel_grid.h>
+#include "core/Log.h"
+
 
 namespace xpcf = org::bcom::xpcf;
 
-XPCF_DEFINE_FACTORY_CREATE_INSTANCE(SolAR::MODULES::PCL::PCFilter)
+XPCF_DEFINE_FACTORY_CREATE_INSTANCE(SolAR::MODULES::PCL::SolARPCFilter)
 
 namespace SolAR {
 using namespace datastructure;
 namespace MODULES {
 namespace PCL {
 
-PCFilter::PCFilter():ConfigurableBase(xpcf::toUUID<PCFilter>())
+SolARPCFilter::SolARPCFilter():ConfigurableBase(xpcf::toUUID<SolARPCFilter>())
 {
     addInterface<api::pointCloud::IPCFilter>(this);
     SRef<xpcf::IPropertyMap> params = getPropertyRootNode();
@@ -38,7 +40,7 @@ PCFilter::PCFilter():ConfigurableBase(xpcf::toUUID<PCFilter>())
     params->wrapFloat( "depthMax", m_depthMax );
 }
 
-FrameworkReturnCode PCFilter::filter(const SRef<PointCloud> inPointCloud, SRef<PointCloud>& outPointCloud) const
+FrameworkReturnCode SolARPCFilter::filter(const SRef<PointCloud> inPointCloud, SRef<PointCloud>& outPointCloud) const
 {
     pcl::PointCloud<pcl::PointXYZ>::Ptr inPointCloudPCL = SolARPCLHelper::solar2pclPointCloud( inPointCloud );
 

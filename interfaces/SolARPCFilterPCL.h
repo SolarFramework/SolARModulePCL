@@ -29,15 +29,15 @@ namespace MODULES {
 namespace PCL {
 
 /**
- * @class PCFilter
+ * @class SolARPCFilter
  * @brief This component filters a point cloud based on Point Cloud Library (PCL).
  */
-class SOLARPCL_EXPORT_API PCFilter : public org::bcom::xpcf::ConfigurableBase,
+class SOLARPCL_EXPORT_API SolARPCFilter : public org::bcom::xpcf::ConfigurableBase,
     public api::pointCloud::IPCFilter
 {
 public:
-    PCFilter();
-    ~PCFilter()= default;
+	SolARPCFilter();
+    ~SolARPCFilter()= default;
 
     /// @brief Filter a point cloud
     /// @param[in] inPointCloud The point cloud to filter

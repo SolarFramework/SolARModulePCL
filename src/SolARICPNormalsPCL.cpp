@@ -19,10 +19,12 @@
 
 #include <pcl/features/normal_3d_omp.h>
 #include <pcl/registration/icp.h>
+#include "core/Log.h"
+
 
 namespace xpcf = org::bcom::xpcf;
 
-XPCF_DEFINE_FACTORY_CREATE_INSTANCE(SolAR::MODULES::PCL::ICPNormals)
+XPCF_DEFINE_FACTORY_CREATE_INSTANCE(SolAR::MODULES::PCL::SolARICPNormals)
 
 namespace SolAR {
 using namespace datastructure;
@@ -47,14 +49,14 @@ inline void _add_normals_2_pointcloud( const pcl::PointCloud<pcl::PointXYZ>::Ptr
     pcl::concatenateFields( *pointcloud, normals, *pointcloud_with_normals );
 }
 
-ICPNormals::ICPNormals():ConfigurableBase(xpcf::toUUID<ICPNormals>())
+SolARICPNormals::SolARICPNormals():ConfigurableBase(xpcf::toUUID<SolARICPNormals>())
 {
     addInterface<api::solver::pose::I3DTransformFinderFrom3D3D>(this);
     SRef<xpcf::IPropertyMap> params = getPropertyRootNode();
     params->wrapDouble( "transformationEpsilon", m_icpPlaneTransformationEpsilon );
 }
 
-FrameworkReturnCode ICPNormals::estimate(const SRef<PointCloud> sourcePointCloud,
+FrameworkReturnCode SolARICPNormals::estimate(const SRef<PointCloud> sourcePointCloud,
                                          const SRef<PointCloud> targetPointCloud,
                                          Transform3Df& pose,
                                          const Transform3Df& initialPose)

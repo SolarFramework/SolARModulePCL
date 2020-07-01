@@ -29,15 +29,15 @@ namespace MODULES {
 namespace PCL {
 
 /**
- * @class ICPNormals
+ * @class SolARICPNormals
  * @brief This component performs Point-To-Plane registration between two pointclouds based on Point Cloud Library (PCL).
  */
-class SOLARPCL_EXPORT_API ICPNormals : public org::bcom::xpcf::ConfigurableBase,
+class SOLARPCL_EXPORT_API SolARICPNormals : public org::bcom::xpcf::ConfigurableBase,
     public api::solver::pose::I3DTransformFinderFrom3D3D
 {
 public:
-    ICPNormals();
-    ~ICPNormals()= default;
+	SolARICPNormals();
+    ~SolARICPNormals()= default;
 
     /// @brief Estimates depth sensor pose from a set of 3D points captured by the depth sensor and defined in the depth sensor coordinate and a point cloud representing the real world geometry.
     /// @param[in] sourcePointCloud, a point cloud captured by the depth sensor defined in the depth sensor coordinate system.

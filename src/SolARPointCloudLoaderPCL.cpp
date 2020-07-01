@@ -21,23 +21,25 @@
 #include <pcl/io/ply_io.h>
 #include <pcl/point_types.h>
 #include <pcl/point_cloud.h>
+#include "core/Log.h"
+
 
 namespace xpcf = org::bcom::xpcf;
 
-XPCF_DEFINE_FACTORY_CREATE_INSTANCE(SolAR::MODULES::PCL::PointCloudLoader)
+XPCF_DEFINE_FACTORY_CREATE_INSTANCE(SolAR::MODULES::PCL::SolARPointCloudLoader)
 
 namespace SolAR {
 using namespace datastructure;
 namespace MODULES {
 namespace PCL {
 
-PointCloudLoader::PointCloudLoader():ConfigurableBase(xpcf::toUUID<PointCloudLoader>())
+SolARPointCloudLoader::SolARPointCloudLoader():ConfigurableBase(xpcf::toUUID<SolARPointCloudLoader>())
 {
     addInterface<api::input::files::IPointCloudLoader>(this);
     SRef<xpcf::IPropertyMap> params = getPropertyRootNode();
 }
 
-FrameworkReturnCode PointCloudLoader::load(const std::string filepath, SRef<PointCloud>& pointCloud)
+FrameworkReturnCode SolARPointCloudLoader::load(const std::string filepath, SRef<PointCloud>& pointCloud)
 {
     pcl::PointCloud<pcl::PointXYZ>::Ptr pointCloudPCL( new pcl::PointCloud<pcl::PointXYZ> );
 

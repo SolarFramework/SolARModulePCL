@@ -29,15 +29,15 @@ namespace MODULES {
 namespace PCL {
 
 /**
- * @class PointCloudLoader
+ * @class SolARPointCloudLoader
  * @brief This component loads a point cloud from a file based on Point Cloud Library (PCL).
  */
-class SOLARPCL_EXPORT_API PointCloudLoader : public org::bcom::xpcf::ConfigurableBase,
+class SOLARPCL_EXPORT_API SolARPointCloudLoader : public org::bcom::xpcf::ConfigurableBase,
     public api::input::files::IPointCloudLoader
 {
 public:
-    PointCloudLoader();
-    ~PointCloudLoader()= default;
+	SolARPointCloudLoader();
+    ~SolARPointCloudLoader()= default;
 
     FrameworkReturnCode load(const std::string filepath, SRef<PointCloud>& pointCloud) override final;
 

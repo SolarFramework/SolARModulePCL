@@ -18,24 +18,26 @@
 #include "SolARPCLHelper.h"
 
 #include <pcl/registration/icp.h>
+#include "core/Log.h"
+
 
 namespace xpcf = org::bcom::xpcf;
 
-XPCF_DEFINE_FACTORY_CREATE_INSTANCE(SolAR::MODULES::PCL::ICP)
+XPCF_DEFINE_FACTORY_CREATE_INSTANCE(SolAR::MODULES::PCL::SolARICP)
 
 namespace SolAR {
 using namespace datastructure;
 namespace MODULES {
 namespace PCL {
 
-ICP::ICP():ConfigurableBase(xpcf::toUUID<PCFilter>())
+	SolARICP::SolARICP():ConfigurableBase(xpcf::toUUID<SolARPCFilter>())
 {
     addInterface<api::solver::pose::I3DTransformFinderFrom3D3D>(this);
     SRef<xpcf::IPropertyMap> params = getPropertyRootNode();
     params->wrapDouble( "transformationEpsilon", m_icpPointTransformationEpsilon );
 }
 
-FrameworkReturnCode ICP::estimate(const SRef<PointCloud> sourcePointCloud,
+FrameworkReturnCode SolARICP::estimate(const SRef<PointCloud> sourcePointCloud,
                                   const SRef<PointCloud> targetPointCloud,
                                   Transform3Df& pose,
                                   const Transform3Df& initialPose)

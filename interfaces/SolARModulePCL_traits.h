@@ -22,38 +22,38 @@
 namespace SolAR {
 namespace MODULES {
 namespace PCL {
-class PointCloudLoader;
-class PCFilter;
-class PCFilterCentroid;
-class ICP;
-class ICPNormals;
+class SolARPointCloudLoader;
+class SolARPCFilter;
+class SolARPCFilterCentroid;
+class SolARICP;
+class SolARICPNormals;
 }
 }
 }
 
-XPCF_DEFINE_COMPONENT_TRAITS(SolAR::MODULES::PCL::PointCloudLoader,
+XPCF_DEFINE_COMPONENT_TRAITS(SolAR::MODULES::PCL::SolARPointCloudLoader,
                              "0415dec1-d5e5-4497-8fd0-a86e21fbc5d5",
-                             "PointCloudLoader",
+                             "SolARPointCloudLoader",
                              "A component based on PCL to load a point cloud from a file")
 
-XPCF_DEFINE_COMPONENT_TRAITS(SolAR::MODULES::PCL::PCFilter,
+XPCF_DEFINE_COMPONENT_TRAITS(SolAR::MODULES::PCL::SolARPCFilter,
                              "14f2f201-39f3-4871-94a1-6e9dc852d3dd",
-                             "PCFilter",
+                             "SolARPCFilter",
                              "A component based on PCL to filter a point cloud")
 
-XPCF_DEFINE_COMPONENT_TRAITS(SolAR::MODULES::PCL::PCFilterCentroid,
+XPCF_DEFINE_COMPONENT_TRAITS(SolAR::MODULES::PCL::SolARPCFilterCentroid,
                              "c90122f0-b432-4809-bf11-85165298b82d",
-                             "PCFilterCentroid",
+                             "SolARPCFilterCentroid",
                              "A component based on PCL to filter a point cloud according to a given centroid")
 
-XPCF_DEFINE_COMPONENT_TRAITS(SolAR::MODULES::PCL::ICP,
+XPCF_DEFINE_COMPONENT_TRAITS(SolAR::MODULES::PCL::SolARICP,
                              "a9b28074-f29b-480a-bbf4-81085a5b64cf",
-                             "ICP",
+                             "SolARICP",
                              "A Iterative Closest Point component based on PCL")
 
-XPCF_DEFINE_COMPONENT_TRAITS(SolAR::MODULES::PCL::ICPNormals,
+XPCF_DEFINE_COMPONENT_TRAITS(SolAR::MODULES::PCL::SolARICPNormals,
                              "e3e0e76f-6cf3-4848-b267-633550a52633",
-                             "ICPNormals",
+                             "SolARICPNormals",
                              "A Iterative Closest Point component based on PCL which use normals")
 
 #endif // SOLARMODULEPCL_TRAITS_H

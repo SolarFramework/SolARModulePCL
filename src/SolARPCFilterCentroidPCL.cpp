@@ -20,24 +20,26 @@
 #include <pcl/point_types.h>
 #include <pcl/point_cloud.h>
 #include <pcl/common/geometry.h>
+#include "core/Log.h"
+
 
 namespace xpcf = org::bcom::xpcf;
 
-XPCF_DEFINE_FACTORY_CREATE_INSTANCE(SolAR::MODULES::PCL::PCFilterCentroid)
+XPCF_DEFINE_FACTORY_CREATE_INSTANCE(SolAR::MODULES::PCL::SolARPCFilterCentroid)
 
 namespace SolAR {
 using namespace datastructure;
 namespace MODULES {
 namespace PCL {
 
-PCFilterCentroid::PCFilterCentroid():ConfigurableBase(xpcf::toUUID<PCFilterCentroid>())
+SolARPCFilterCentroid::SolARPCFilterCentroid():ConfigurableBase(xpcf::toUUID<SolARPCFilterCentroid>())
 {
     addInterface<api::pointCloud::IPCFilterCentroid>(this);
     SRef<xpcf::IPropertyMap> params = getPropertyRootNode();
     params->wrapFloat( "radiusThreshold", m_radiusThreshold );
 }
 
-FrameworkReturnCode PCFilterCentroid::filter(const SRef<PointCloud> inPointCloud, const SRef<Point3Df> centroid, SRef<PointCloud>& outPointCloud) const
+FrameworkReturnCode SolARPCFilterCentroid::filter(const SRef<PointCloud> inPointCloud, const SRef<Point3Df> centroid, SRef<PointCloud>& outPointCloud) const
 {
     pcl::PointCloud<pcl::PointXYZ>::Ptr in_points_pcl = SolARPCLHelper::solar2pclPointCloud( inPointCloud );
 

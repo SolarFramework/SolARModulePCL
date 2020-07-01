@@ -29,15 +29,15 @@ namespace MODULES {
 namespace PCL {
 
 /**
- * @class PCFilterCentroid
+ * @class SolARPCFilterCentroid
  * @brief This component filters a point cloud according to a given centroid based on Point Cloud Library (PCL).
  */
-class SOLARPCL_EXPORT_API PCFilterCentroid : public org::bcom::xpcf::ConfigurableBase,
+class SOLARPCL_EXPORT_API SolARPCFilterCentroid : public org::bcom::xpcf::ConfigurableBase,
     public api::pointCloud::IPCFilterCentroid
 {
 public:
-    PCFilterCentroid();
-    ~PCFilterCentroid()= default;
+	SolARPCFilterCentroid();
+    ~SolARPCFilterCentroid()= default;
 
     /// @brief Filter a point cloud according to a given centroid
     /// @param[in] inPointCloud The point cloud to filter
