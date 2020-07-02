@@ -62,6 +62,7 @@ Plugin/build/
 Plugin/tests/TestNaturalImageMarkerPipeline/build/
 StandAlone/build/
 build-MTRelease/
+bcom-SolARModulePCL.pc
 *.ib_pdb_index
 *.idb
 *.ilk
