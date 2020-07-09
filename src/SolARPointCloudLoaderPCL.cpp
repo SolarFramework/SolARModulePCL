@@ -35,8 +35,9 @@ namespace PCL {
 
 SolARPointCloudLoader::SolARPointCloudLoader():ConfigurableBase(xpcf::toUUID<SolARPointCloudLoader>())
 {
-    addInterface<api::input::files::IPointCloudLoader>(this);
-    SRef<xpcf::IPropertyMap> params = getPropertyRootNode();
+	declareInterface<api::input::files::IPointCloudLoader>(this);
+	LOG_DEBUG("SolARPointCloudLoader constructor");
+	declareProperty("filepath", m_filepath);
 }
 
 FrameworkReturnCode SolARPointCloudLoader::load(const std::string filepath, SRef<PointCloud>& pointCloud)
@@ -65,9 +66,14 @@ FrameworkReturnCode SolARPointCloudLoader::load(const std::string filepath, SRef
 
     *pointCloud = SolARPCLHelper::pcl2solarPointCloud( pointCloudPCL );
 
-    LOG_INFO("successfully loaded pointcloud file {}",filepath);
-
+    LOG_INFO("successfully loaded pointcloud file {} - {} points",filepath,pointCloud->getPointCloud().size());
     return FrameworkReturnCode::_SUCCESS;
+}
+
+FrameworkReturnCode SolARPointCloudLoader::load(SRef<PointCloud>& pointCloud)
+{
+	LOG_DEBUG("File loaded {}", m_filepath);
+	return load(m_filepath, pointCloud);
 }
 
 }
