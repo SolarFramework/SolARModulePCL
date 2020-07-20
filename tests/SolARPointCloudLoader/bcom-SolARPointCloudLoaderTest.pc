@@ -1,0 +1,12 @@
+libname=SolARPointCloudLoaderTest
+prefix=/usr/local
+exec_prefix=${prefix}
+libdir=${exec_prefix}/lib
+includedir=${prefix}/interfaces
+Name: SolARPointCloudLoaderTest
+Description: 
+Version: 0.8.1
+Requires:
+Libs: -L${libdir} -l${libname}
+Libs.private: ${libdir}/${pfx}${libname}.${lext}
+Cflags: -I${includedir}
