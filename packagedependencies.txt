@@ -1,3 +1,3 @@
 SolARFramework|0.8.1|SolARFramework|SolARBuild@github|https://github.com/SolarFramework/SolarFramework/releases/download
 pcl|1.9.1|pcl|thirdParties@github|https://github.com/SolarFramework/binaries/releases/download
-flann|1.9.1|flann|thirdParties@github|https://github.com/SolarFramework/binaries/releases/download
+flann17|1.9.1|flann|thirdParties@github|https://github.com/SolarFramework/binaries/releases/download

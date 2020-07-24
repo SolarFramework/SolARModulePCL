@@ -74,7 +74,7 @@ int main(int argc, char *argv[])
 		if(argc==2){
 			//change the path of the mesh according to the argument given in parameter
 			pcLoader->bindTo<xpcf::IConfigurable>()->getProperty("filePath")->setStringValue(argv[1], 0);
-			LOG_INFO("Mesh path override from argurment");
+			LOG_INFO("Mesh path override from argument");
 		}
 		
 
