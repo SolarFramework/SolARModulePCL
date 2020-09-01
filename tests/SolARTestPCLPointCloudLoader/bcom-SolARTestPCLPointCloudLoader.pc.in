@@ -1,9 +1,9 @@
-libname=SolARPointCloudLoaderTest
+libname=SolARTestPCLPointCloudLoader
 prefix=/usr/local
 exec_prefix=${prefix}
 libdir=${exec_prefix}/lib
 includedir=${prefix}/interfaces
-Name: SolARPointCloudLoaderTest
+Name: SolARTestPCLPointCloudLoader
 Description: 
 Version: 0.8.1
 Requires:

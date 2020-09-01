@@ -49,9 +49,9 @@ int main(int argc, char *argv[])
 	try {
 		SRef<xpcf::IComponentManager> xpcfComponentManager = xpcf::getComponentManagerInstance();
 
-		if (xpcfComponentManager->load("SolARPointCloudLoaderTest_conf.xml") != org::bcom::xpcf::_SUCCESS)
+		if (xpcfComponentManager->load("SolARTestPCLPointCloudLoader_conf.xml") != org::bcom::xpcf::_SUCCESS)
 		{
-			LOG_ERROR("Failed to load the configuration file SolARPointCloudLoaderTest_conf.xml")
+			LOG_ERROR("Failed to load the configuration file SolARTestPCLPointCloudLoader_conf.xml")
 				return -1;
 		}
 

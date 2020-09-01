@@ -3,7 +3,7 @@ QT       -= core gui
 CONFIG -= qt
 
 ## global defintions : target lib name, version
-TARGET = SolARPointCloudLoaderTest
+TARGET = SolARTestPCLPointCloudLoader
 VERSION=0.8.1
 
 DEFINES += MYVERSION=$${VERSION}
@@ -64,7 +64,7 @@ win32 {
 }
 
 config_files.path = $${TARGETDEPLOYDIR}
-config_files.files= $$files($${PWD}/SolARPointCloudLoaderTest_conf.xml)
+config_files.files= $$files($${PWD}/SolARTestPCLPointCloudLoader_conf.xml)
 
 INSTALLS += config_files
 
