@@ -1,0 +1,5 @@
+SolArModulePipeline {
+    moduleName="SolARModulePCL"
+    runTests=true
+    dirName="SolARBuild"
+}
