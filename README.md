@@ -1,11 +1,16 @@
-SolARModulePCL
-=============
+# SolARModulePCL
 
-*SolAR is an open-source framework released under Apache license 2.0 making possible to easily create your own camera pose estimation solution to develop Augmented Reality applications. 
-SolAR is dedicated to Augmented Reality (AR).
-It offers a C++ SDK to easily and quickly develop and use custom solutions for camera pose estimation. It provides developers with a full chain from low-level vision components development to camera pose estimation pipelines and AR service development.*
+[![License](https://img.shields.io/github/license/SolARFramework/SolARModuleOpencv?style=flat-square&label=License)](https://www.apache.org/licenses/LICENSE-2.0)
+[![Build Status](http://argo.ci.b-com.com/buildStatus/icon?job=SolAR-Modules%2FSolARModulePCL%2Fmaster&style=flat-square&subject=Master)](http://argo.ci.b-com.com/job/SolAR-Modules/job/SolARModulePCL/job/master/)
+[![Build Status](http://argo.ci.b-com.com/buildStatus/icon?job=SolAR-Modules%2FSolARModulePCL%2Fdevelop&style=flat-square&subject=Dev)](http://argo.ci.b-com.com/job/SolAR-Modules/job/SolARModulePCL/job/develop/)
 
 The **SolAR Module PCL** is a module to use [ Point Cloud Library](https://pointclouds.org/). The Point Cloud Library (PCL) is a standalone, large scale, open project for 2D/3D image and point cloud processing. PCL is released under the terms of the **BSD license**, and thus free for commercial and research use.
+
+The PCL framework contains numerous state-of-the art algorithms including filtering, feature estimation, surface reconstruction, registration, model fitting and segmentation. These algorithms can be used, for example, to filter outliers from noisy data, stitch 3D point clouds together, segment relevant parts of a scene, extract keypoints and compute descriptors to recognize objects in the world based on their geometric appearance, and create surfaces from point clouds and visualize them. It requires [Flann](https://github.com/mariusmuja/flann) (Fast Library for Approximate Nearest Neighbors).
+
+
+
+
 
 ## Tests
 
