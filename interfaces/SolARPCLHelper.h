@@ -31,8 +31,8 @@ namespace PCL {
 class SOLARPCL_EXPORT_API SolARPCLHelper
 {
 public:
-    inline static pcl::PointCloud<pcl::PointXYZ>::Ptr solar2pclPointCloud( const SRef<datastructure::PointCloud>& inPointCloud );
-    inline static datastructure::PointCloud pcl2solarPointCloud( const pcl::PointCloud<pcl::PointXYZ>::Ptr& inPointCloudPCL );
+    static pcl::PointCloud<pcl::PointXYZ>::Ptr solar2pclPointCloud( const SRef<datastructure::PointCloud>& inPointCloud );
+    static datastructure::PointCloud pcl2solarPointCloud( const pcl::PointCloud<pcl::PointXYZ>::Ptr& inPointCloudPCL );
 };
 
 }
