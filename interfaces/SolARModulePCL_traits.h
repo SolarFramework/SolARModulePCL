@@ -21,6 +21,12 @@
 
 namespace SolAR {
 namespace MODULES {
+/**
+ * @namespace SolAR::MODULES::PCL
+ * @brief <B>Provides a set of function to process point cloud based on the point clouds library: https://pointclouds.org </B>
+ * <TT>UUID: bc1a5b44-d022-4234-8f7a-7e2b72763bad</TT>
+ *
+ */
 namespace PCL {
 class SolARPointCloudLoader;
 class SolARPCFilter;
