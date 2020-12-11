@@ -24,7 +24,6 @@
 
 
 namespace SolAR {
-using namespace datastructure;
 namespace MODULES {
 namespace PCL {
 
@@ -39,7 +38,7 @@ public:
 	SolARPointCloudLoader();
     ~SolARPointCloudLoader()= default;
 
-    FrameworkReturnCode load(const std::string filepath, SRef<PointCloud>& pointCloud) override final;
+    FrameworkReturnCode load(const std::string filepath, SRef<datastructure::PointCloud>& pointCloud) override final;
 
     void unloadComponent () override final;
 
