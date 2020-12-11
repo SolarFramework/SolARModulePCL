@@ -24,7 +24,6 @@
 
 
 namespace SolAR {
-using namespace datastructure;
 namespace MODULES {
 namespace PCL {
 
@@ -44,10 +43,10 @@ public:
     /// @param[in] targetPointCloud, a point cloud representing the geometry of the real world.
     /// @param[out] pose, depth camera pose (pose of the depth camera defined in world coordinate system) expressed as a Transform3D.
     /// @param[in] initialPose (Optional), a transform3D to initialize the pose (reducing the convergence time and improving its success).
-    FrameworkReturnCode estimate(const SRef<PointCloud> sourcePointCloud,
-                                 const SRef<PointCloud> targetPointCloud,
-                                 Transform3Df& pose,
-                                 const Transform3Df& initialPose = Transform3Df::Identity()) override final;
+    FrameworkReturnCode estimate(const SRef<datastructure::PointCloud> sourcePointCloud,
+                                 const SRef<datastructure::PointCloud> targetPointCloud,
+                                 datastructure::Transform3Df& pose,
+                                 const datastructure::Transform3Df& initialPose = datastructure::Transform3Df::Identity()) override final;
 
     void unloadComponent () override final;
 
