@@ -40,7 +40,7 @@ SolARPointCloudLoader::SolARPointCloudLoader():ConfigurableBase(xpcf::toUUID<Sol
 	LOG_DEBUG("SolARPointCloudLoader constructor");
 }
 
-FrameworkReturnCode SolARPointCloudLoader::load(const std::string filepath, SRef<PointCloud>& pointCloud)
+FrameworkReturnCode SolARPointCloudLoader::load(const std::string & filepath, SRef<PointCloud>& pointCloud)
 {
     pcl::PointCloud<pcl::PointXYZ>::Ptr pointCloudPCL( new pcl::PointCloud<pcl::PointXYZ> );
 
