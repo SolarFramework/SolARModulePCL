@@ -3,7 +3,7 @@ QT       -= core gui
 CONFIG -= qt
 
 ## global defintions : target lib name, version
-TARGET = SolARTestPCLPointCloudLoader
+TARGET = SolARTest_ModulePCL_PointCloudLoader
 VERSION=0.9.0
 
 DEFINES += MYVERSION=$${VERSION}
@@ -27,7 +27,7 @@ CONFIG(release,debug|release) {
 win32:CONFIG -= static
 win32:CONFIG += shared
 
-DEPENDENCIESCONFIG = sharedlib recursive install_recurse
+DEPENDENCIESCONFIG = shared install_recurse
 
 ## Configuration for Visual Studio to install binaries and dependencies. Work also for QT Creator by replacing QMAKE_INSTALL
 PROJECTCONFIG = QTVS
@@ -64,13 +64,12 @@ win32 {
 }
 
 config_files.path = $${TARGETDEPLOYDIR}
-config_files.files= $$files($${PWD}/SolARTestPCLPointCloudLoader_conf.xml)
+config_files.files= $$files($${PWD}/SolARTest_ModulePCL_PointCloudLoader_conf.xml)
 
 INSTALLS += config_files
 
+DISTFILES += \
+    packagedependencies.txt
+
 #NOTE : Must be placed at the end of the .pro
 include ($$shell_quote($$shell_path($${QMAKE_REMAKEN_RULES_ROOT}/remaken_install_target.pri)))) # Shell_quote & shell_path required for visual on windows
-
-DISTFILES += \
-    SolARTestPCLPointCloudLoader_conf.xml \
-    packagedependencies.txt
