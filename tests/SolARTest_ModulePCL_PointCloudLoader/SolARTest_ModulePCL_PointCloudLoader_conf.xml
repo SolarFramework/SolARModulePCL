@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
 <xpcf-registry autoAlias="true">
-    <module uuid="bc1a5b44-d022-4234-8f7a-7e2b72763bad" name="SolARModulePCL" description="SolARModulePCL" path="$REMAKEN_PKG_ROOT/packages/SolARBuild/win-cl-14.1/SolARModulePCL/0.9.0/lib/x86_64/shared">
+    <module uuid="bc1a5b44-d022-4234-8f7a-7e2b72763bad" name="SolARModulePCL" description="SolARModulePCL" path="$REMAKEN_PKG_ROOT/packages/SolARBuild/win-cl-14.1/SolARModulePCL/0.9.3/lib/x86_64/shared">
         <component uuid="c90122f0-b432-4809-bf11-85165298b82d" name="SolARPCFilterCentroid" description="A component based on PCL to filter a point cloud according to a given centroid">
                 <interface uuid="125f2007-1bf9-421d-9367-fbdc1210d006" name="IComponentIntrospect" description="IComponentIntrospect"/>
                 <interface uuid="b293048a-1b04-4598-b2e5-7f485402acc0" name="IPCFilterCentroid" description="Interface for point cloud filtering according to a given 3D point"/>
@@ -22,7 +22,7 @@
                 <interface uuid="1abd8117-87d3-4c6c-8fb6-c2fdb7359ee2" name="IPointCloudLoader" description="Load a point cloud from a file"/>
         </component>
     </module>
-    <module uuid="6e960df6-9a36-11e8-9eb6-529269fb1459" name="SolARModuleOpenGL" description="SolARModuleOpenGL" path="$REMAKEN_PKG_ROOT/packages/SolARBuild/win-cl-14.1/SolARModuleOpenGL/0.9.0/lib/x86_64/shared">
+    <module uuid="6e960df6-9a36-11e8-9eb6-529269fb1459" name="SolARModuleOpenGL" description="SolARModuleOpenGL" path="$REMAKEN_PKG_ROOT/packages/SolARBuild/win-cl-14.1/SolARModuleOpenGL/0.9.3/lib/x86_64/shared">
         <component uuid="afd38ea0-9a46-11e8-9eb6-529269fb1459" name="SolAR3DPointsViewerOpengl" description="SolAR3DPointsViewerOpengl">
                 <interface uuid="125f2007-1bf9-421d-9367-fbdc1210d006" name="IComponentIntrospect" description="IComponentIntrospect"/>
                 <interface uuid="575d365a-9a27-11e8-9eb6-529269fb1459" name="I3DPointsViewer" description="I3DPointsViewer"/>

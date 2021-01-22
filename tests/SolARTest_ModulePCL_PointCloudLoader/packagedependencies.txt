@@ -1,3 +1,3 @@
-SolARFramework|0.9.0|SolARFramework|SolARBuild@github|https://github.com/SolarFramework/SolarFramework/releases/download
-SolARModulePCL|0.9.0|SolARModulePCL|SolARBuild@github|https://github.com/SolarFramework/SolARModulePCL/releases/download
-SolARModuleOpenGL|0.9.0|SolARModuleOpenGL|SolARBuild@github|https://github.com/SolarFramework/SolARModuleOpenGL/releases/download
+SolARFramework|0.9.3|SolARFramework|SolARBuild@github|https://github.com/SolarFramework/SolarFramework/releases/download
+SolARModulePCL|0.9.3|SolARModulePCL|SolARBuild@github|https://github.com/SolarFramework/SolARModulePCL/releases/download
+SolARModuleOpenGL|0.9.3|SolARModuleOpenGL|SolARBuild@github|https://github.com/SolarFramework/SolARModuleOpenGL/releases/download
