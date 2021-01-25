@@ -30,7 +30,15 @@ namespace PCL {
 /**
  * @class SolARPointCloudLoader
  * @brief This component loads a point cloud from a file based on Point Cloud Library (PCL).
+ *
+ * @SolARComponentPropertiesBegin
+ * @SolARComponentProperty{ filePath,
+ *                          the path of the image to load,
+ *                          @SolARComponentPropertyDescString{ "" }}
+ * @SolARComponentPropertiesEnd
+ *
  */
+
 class SOLARPCL_EXPORT_API SolARPointCloudLoader : public org::bcom::xpcf::ConfigurableBase,
     public api::input::files::IPointCloudLoader
 {
