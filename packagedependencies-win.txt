@@ -1,1 +1,1 @@
-pcl|1.11.1|pcl|thirdParties@github|https://github.com/SolarFramework/binaries/releases/download
+pcl|1.9.1|pcl|thirdParties@github|https://github.com/SolarFramework/binaries/releases/download
