@@ -24,14 +24,21 @@
 
 
 namespace SolAR {
-using namespace datastructure;
 namespace MODULES {
 namespace PCL {
 
 /**
  * @class SolARPointCloudLoader
  * @brief This component loads a point cloud from a file based on Point Cloud Library (PCL).
+ *
+ * @SolARComponentPropertiesBegin
+ * @SolARComponentProperty{ filePath,
+ *                          the path of the image to load,
+ *                          @SolARComponentPropertyDescString{ "" }}
+ * @SolARComponentPropertiesEnd
+ *
  */
+
 class SOLARPCL_EXPORT_API SolARPointCloudLoader : public org::bcom::xpcf::ConfigurableBase,
     public api::input::files::IPointCloudLoader
 {
@@ -39,7 +46,7 @@ public:
 	SolARPointCloudLoader();
     ~SolARPointCloudLoader()= default;
 
-    FrameworkReturnCode load(const std::string filepath, SRef<PointCloud>& pointCloud) override final;
+    FrameworkReturnCode load(const std::string & filepath, SRef<datastructure::PointCloud>& pointCloud) override final;
 
     void unloadComponent () override final;
 

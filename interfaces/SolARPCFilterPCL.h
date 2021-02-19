@@ -24,7 +24,6 @@
 
 
 namespace SolAR {
-using namespace datastructure;
 namespace MODULES {
 namespace PCL {
 
@@ -42,7 +41,7 @@ public:
     /// @brief Filter a point cloud
     /// @param[in] inPointCloud The point cloud to filter
     /// @param[out] outPointCloud The resulting point cloud after filtering
-    FrameworkReturnCode filter(const SRef<PointCloud> inPointCloud, SRef<PointCloud>& outPointCloud) const override final;
+    FrameworkReturnCode filter(const SRef<datastructure::PointCloud> inPointCloud, SRef<datastructure::PointCloud>& outPointCloud) const override final;
 
     void unloadComponent () override final;
 
