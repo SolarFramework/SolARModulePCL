@@ -28,11 +28,12 @@ pcl::PointCloud<pcl::PointXYZ>::Ptr SolARPCLHelper::solar2pclPointCloud( const S
 {
     pcl::PointCloud<pcl::PointXYZ>::Ptr outPointCloudPCL( new pcl::PointCloud<pcl::PointXYZ> );
 
-    const auto& in_points = inPointCloud->getConstPointCloud();
+	std::vector<SRef<datastructure::CloudPoint>> in_points;
+	inPointCloud->getAllPoints(in_points);
 
     for( const auto& pt : in_points )
     {
-        outPointCloudPCL->push_back( { pt.x(), pt.y(), pt.z() } );
+        outPointCloudPCL->push_back( { pt->x(), pt->y(), pt->z() } );
     }
 
     return outPointCloudPCL;
@@ -42,11 +43,9 @@ datastructure::PointCloud SolARPCLHelper::pcl2solarPointCloud( const pcl::PointC
 {
     datastructure::PointCloud outPointCloud;
 
-    auto& out_points = outPointCloud.getPointCloud();
-
     for( const auto& pt : *inPointCloudPCL )
     {
-        out_points.emplace_back(pt.x, pt.y, pt.z);
+		outPointCloud.addPoint(datastructure::CloudPoint(pt.x, pt.y, pt.z));
     }
 
     return outPointCloud;

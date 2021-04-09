@@ -66,7 +66,7 @@ FrameworkReturnCode SolARPointCloudLoader::load(const std::string & filepath, SR
 
     *pointCloud = SolARPCLHelper::pcl2solarPointCloud( pointCloudPCL );
 
-    LOG_INFO("successfully loaded pointcloud file {} - {} points",filepath,pointCloud->getPointCloud().size());
+    LOG_INFO("successfully loaded pointcloud file {} - {} points",filepath,pointCloud->getNbPoints());
     return FrameworkReturnCode::_SUCCESS;
 }
 }
