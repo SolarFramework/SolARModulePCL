@@ -42,20 +42,14 @@ SolARPCFilterCentroid::SolARPCFilterCentroid():ConfigurableBase(xpcf::toUUID<Sol
 FrameworkReturnCode SolARPCFilterCentroid::filter(const SRef<PointCloud> inPointCloud, const SRef<Point3Df> centroid, SRef<PointCloud>& outPointCloud) const
 {
     pcl::PointCloud<pcl::PointXYZ>::Ptr in_points_pcl = SolARPCLHelper::solar2pclPointCloud( inPointCloud );
-
-    if (outPointCloud == nullptr)
-        outPointCloud = xpcf::utils::make_shared<PointCloud>();
-
-    auto& out_points = outPointCloud->getPointCloud();
-
-    out_points.clear();
+	outPointCloud = xpcf::utils::make_shared<PointCloud>();
 
     const pcl::PointXYZ ref_point{ centroid->x(), centroid->y(), centroid->z() };
 
     for( const auto& pt : *in_points_pcl )
     {
         if( pcl::geometry::distance( pt, ref_point ) <= m_radiusThreshold )
-            out_points.emplace_back( pt.x, pt.y, pt.z );
+			outPointCloud->addPoint(CloudPoint(pt.x, pt.y, pt.z));
     }
 
     return FrameworkReturnCode::_SUCCESS;

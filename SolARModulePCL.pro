@@ -6,7 +6,7 @@ CONFIG -= qt
 INSTALLSUBDIR = SolARBuild
 TARGET = SolARModulePCL
 FRAMEWORK = $$TARGET
-VERSION=0.9.3
+VERSION=0.9.4
 
 DEFINES += MYVERSION=$${VERSION}
 DEFINES += TEMPLATE_LIBRARY
@@ -42,6 +42,9 @@ INCLUDEPATH += interfaces/
 include (SolARModulePCL.pri)
 
 unix:!android {
+
+    message("------------ This module is not supported on Unix platform --------------")
+
     QMAKE_CXXFLAGS += -Wignored-qualifiers
 #    QMAKE_LINK=clang++
 #    QMAKE_CXX = clang++
@@ -53,6 +56,9 @@ linux {
 }
 
 macx {
+
+    message("------------ This module is not supported on Mac platform --------------")
+
     DEFINES += _MACOS_TARGET_
     QMAKE_MAC_SDK= macosx
     QMAKE_CFLAGS += -mmacosx-version-min=10.7 -std=c11 #-x objective-c++
