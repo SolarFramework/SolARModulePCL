@@ -6,7 +6,7 @@ CONFIG -= qt
 INSTALLSUBDIR = SolARBuild
 TARGET = SolARModulePCL
 FRAMEWORK = $$TARGET
-VERSION=0.9.4
+VERSION=0.9.3
 
 DEFINES += MYVERSION=$${VERSION}
 DEFINES += TEMPLATE_LIBRARY
@@ -53,6 +53,11 @@ unix:!android {
 linux {
     QMAKE_LFLAGS += -ldl
     LIBS += -L/home/linuxbrew/.linuxbrew/lib # temporary fix caused by grpc with -lre2 ... without -L in grpc.pc
+}
+
+linux {
+        QMAKE_LFLAGS += -ldl
+        LIBS += -L/home/linuxbrew/.linuxbrew/lib # temporary fix caused by grpc with -lre2 ... without -L in grpc.pc
 }
 
 macx {
