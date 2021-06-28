@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
 <xpcf-registry autoAlias="true"> 
-        <module uuid="bc1a5b44-d022-4234-8f7a-7e2b72763bad" name="SolARModulePCL" description="SolARModulePCL" path="$XPCF_MODULE_ROOT/SolARBuild/SolARModulePCL/0.9.3/lib/x86_64/shared">
+        <module uuid="bc1a5b44-d022-4234-8f7a-7e2b72763bad" name="SolARModulePCL" description="SolARModulePCL" path="$XPCF_MODULE_ROOT/SolARBuild/SolARModulePCL/0.10.0/lib/x86_64/shared">
 		<component uuid="e3e0e76f-6cf3-4848-b267-633550a52633" name="SolARICPNormals" description="A Iterative Closest Point component based on PCL which use normals">
                 <interface uuid="125f2007-1bf9-421d-9367-fbdc1210d006" name="IComponentIntrospect" description="IComponentIntrospect"/>
                 <interface uuid="f2873a5d-0f9f-43a3-816c-1850ea7fe32d" name="I3DTransformFinderFrom3D3D" description="Estimate the 3D pose of a camera according to 3D-3D correspondences"/>
