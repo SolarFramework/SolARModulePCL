@@ -44,8 +44,6 @@ include (SolARModulePCL.pri)
 
 unix:!android {
 
-    message("------------ This module is not supported on Unix platform --------------")
-
     QMAKE_CXXFLAGS += -Wignored-qualifiers
 #    QMAKE_LINK=clang++
 #    QMAKE_CXX = clang++
@@ -83,6 +81,8 @@ win32 {
 }
 
 android {
+    message("------------ This module is not supported on Android platform --------------")
+
     ANDROID_ABIS="arm64-v8a"
 }
 
