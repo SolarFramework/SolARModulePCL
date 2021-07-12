@@ -18,9 +18,6 @@
 #include <boost/log/core.hpp>
 #include <string>
 
- // ADD MODULES TRAITS HEADERS HERE
-#include "SolARModulePCL_traits.h"
-#include "SolARModuleOpengl_traits.h"
 
 // ADD XPCF HEADERS HERE
 #include "xpcf/xpcf.h"
@@ -32,8 +29,6 @@
 using namespace SolAR;
 using namespace SolAR::datastructure;
 using namespace SolAR::api;
-using namespace SolAR::MODULES::PCL;
-using namespace SolAR::MODULES::OPENGL;
 
 namespace xpcf  = org::bcom::xpcf;
 
@@ -57,7 +52,7 @@ int main(int argc, char *argv[])
 
 		// declare and create components
 		LOG_INFO("Start creating components");
-		auto pcLoader = xpcfComponentManager->create<SolARPointCloudLoader>()->bindTo<input::files::IPointCloudLoader>();
+        auto pcLoader = xpcfComponentManager->resolve<input::files::IPointCloudLoader>();
 		auto viewer3DPoints = xpcfComponentManager->resolve<display::I3DPointsViewer>();
 		LOG_INFO("Components created");
 
