@@ -1,2 +1,2 @@
 flann|1.9.1|flann|conan-solar@conan|conan-solar
-pcl|1.12.0|pcl|conan-solar@conan|conan-solar|default|boost:zlib=False#boost:bzip2=False#boost:numa=False#with_cuda=False
+pcl|1.12.0|pcl|conan-solar@conan|conan-solar|default|boost:zlib=False#boost:bzip2=False#boost:numa=False#boost:shared=True#with_cuda=False
