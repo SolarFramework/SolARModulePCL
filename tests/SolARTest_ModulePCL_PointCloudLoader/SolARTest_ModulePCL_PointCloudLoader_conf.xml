@@ -36,7 +36,7 @@
 </factory>
 <properties>
 		<configure component="SolARPointCloudLoader">
-                        <property name="filePath" type="string" value="../../../../data/frac_star.pcd"/>
+                        <property name="filePath" type="string" value="../../../../../data/frac_star.pcd"/>
 		</configure>
 		<configure component="SolAR3DPointsViewerOpengl">
 			<property name="title" type="string" value="3D Viewer"/>
