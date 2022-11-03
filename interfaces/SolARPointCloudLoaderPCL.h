@@ -46,7 +46,7 @@ public:
 	SolARPointCloudLoader();
     ~SolARPointCloudLoader()= default;
 
-    FrameworkReturnCode load(const std::string & filepath, SRef<datastructure::PointCloud>& pointCloud) override final;
+    FrameworkReturnCode load(SRef<datastructure::PointCloud>& pointCloud) override final;
 
     void unloadComponent () override final;
 
