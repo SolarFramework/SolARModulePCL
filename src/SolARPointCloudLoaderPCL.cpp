@@ -40,24 +40,24 @@ SolARPointCloudLoader::SolARPointCloudLoader():ConfigurableBase(xpcf::toUUID<Sol
 	LOG_DEBUG("SolARPointCloudLoader constructor");
 }
 
-FrameworkReturnCode SolARPointCloudLoader::load(const std::string & filepath, SRef<PointCloud>& pointCloud)
+FrameworkReturnCode SolARPointCloudLoader::load(SRef<PointCloud>& pointCloud)
 {
     pcl::PointCloud<pcl::PointXYZ>::Ptr pointCloudPCL( new pcl::PointCloud<pcl::PointXYZ> );
 
     int res = 0;
-    if( boost::algorithm::ends_with( filepath, ".pcd" ) )
-        res = pcl::io::loadPCDFile( filepath, *pointCloudPCL );
-    else if( boost::algorithm::ends_with( filepath, ".ply" ) )
-        res = pcl::io::loadPLYFile( filepath, *pointCloudPCL );
+    if( boost::algorithm::ends_with( m_filePath, ".pcd" ) )
+        res = pcl::io::loadPCDFile( m_filePath, *pointCloudPCL );
+    else if( boost::algorithm::ends_with( m_filePath, ".ply" ) )
+        res = pcl::io::loadPLYFile( m_filePath, *pointCloudPCL );
     else
     {
-        LOG_ERROR("file extension not managed for file {} (only .pcd and .ply supported for now)", filepath );
+        LOG_ERROR("file extension not managed for file {} (only .pcd and .ply supported for now)", m_filePath );
         return FrameworkReturnCode::_STOP;
     }
 
     if( res < 0 )
     {
-        LOG_ERROR("cannot parse file {} (return code:{})", filepath, res );
+        LOG_ERROR("cannot parse file {} (return code:{})", m_filePath, res );
         return FrameworkReturnCode::_STOP;
     }
 
@@ -66,7 +66,7 @@ FrameworkReturnCode SolARPointCloudLoader::load(const std::string & filepath, SR
 
     *pointCloud = SolARPCLHelper::pcl2solarPointCloud( pointCloudPCL );
 
-    LOG_INFO("successfully loaded pointcloud file {} - {} points",filepath,pointCloud->getNbPoints());
+    LOG_INFO("successfully loaded pointcloud file {} - {} points",m_filePath,pointCloud->getNbPoints());
     return FrameworkReturnCode::_SUCCESS;
 }
 }

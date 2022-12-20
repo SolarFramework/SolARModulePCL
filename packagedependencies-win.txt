@@ -1,1 +1,1 @@
-pcl|1.12.0|pcl|conan-solar@conan|conan-solar#https://artifact.b-com.com/api/conan/solar-conan-local#0|default|boost:zlib=False#boost:bzip2=False#boost:numa=False#boost:without_stacktrace=True#boost:shared=True#with_cuda=False
+pcl#boost_1_76|1.12.0|pcl|conan-solar@conan|conan-solar#https://repository.solarframework.org/conan#0|default|boost:zlib=False#boost:bzip2=False#boost:shared=True#with_cuda=False

@@ -73,7 +73,7 @@ int main(int argc, char *argv[])
 		}
 		
 
-		if (pcLoader->load(pcLoader->bindTo<xpcf::IConfigurable>()->getProperty("filePath")->getStringValue(), meshPointCloud) != FrameworkReturnCode::_SUCCESS) {
+        if (pcLoader->load(meshPointCloud) != FrameworkReturnCode::_SUCCESS) {
 			LOG_ERROR("Cannot load mesh with path : {}", pcLoader->bindTo<xpcf::IConfigurable>()->getProperty("filePath")->getStringValue());
 			return -1;
 		}
